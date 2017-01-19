@@ -48,8 +48,8 @@ set splitright " split to the right
     
 " Vim-go
 " Go bin path
-let g:go_bin_path="C:/Users/Felix/Documents/projects/go/bin"
-let g:go_path="C:/Users/Felix/Documents/projects/go"
+let g:go_bin_path="/Users/felix/code/go/bin"
+let g:go_path="/Users/felix/code/go"
 " Syntax highlighting
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
