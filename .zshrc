@@ -89,3 +89,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+# # Clean docker containers and images easier
+# function dockercleanimages {
+# 	docker rmi -f $(docker images -q -f dangling=true)
+# }
+#
+# function dockercleancontainers {
+# 	docker rm $(docker ps -a -q)
+# }
