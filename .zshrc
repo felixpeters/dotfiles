@@ -7,8 +7,14 @@ export ZSH=/Users/felix/.oh-my-zsh
 # Set GOPATH environment variable
 export GOPATH=$HOME/code/go
 
+# Set PATH variable
+export PATH=$PATH:$GOPATH/bin
+
 # Include z navigation plugin
 . ~/z/z.sh
+
+# source the bash profile
+source ~/.bash_profile
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -32,7 +38,7 @@ ZSH_THEME="miloshadzic"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -98,3 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # function dockercleancontainers {
 # 	docker rm $(docker ps -a -q)
 # }
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Applications/google-cloud-sdk/path.zsh.inc' ]; then source '/Applications/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Applications/google-cloud-sdk/completion.zsh.inc' ]; then source '/Applications/google-cloud-sdk/completion.zsh.inc'; fi

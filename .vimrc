@@ -5,7 +5,8 @@ execute pathogen#infect()
 syntax enable
 filetype plugin indent on
 set autoindent
-set ts=4 " set indent to 4 spaces
+set expandtab
+set ts=2 " set indent to 4 spaces
 set showmatch " show bracket matches
 set ignorecase " ignore case in search
 set hlsearch " highlight all search matches
@@ -13,6 +14,23 @@ set incsearch " show typeahead search results
 set ruler " show row and column in footer
 set clipboard=unnamed " use system clipboard
 set wildmenu " enable bash style tab completion
+
+" Indentation settings
+" Python settings
+au BufNewFile,BufRead *.py
+        \ set tabstop=4 |
+        \ set softtabstop=4 |
+        \ set shiftwidth=4 |
+        \ set fileformat=unix |
+
+" Go settings
+au BufNewFile,BufRead *.go
+        \ set tabstop=2 |
+        \ set softtabstop=2 |
+        \ set shiftwidth=2 |
+
+" Set leader key
+let mapleader=","
 
 " Line numbers
 set relativenumber " relative line numbers
@@ -59,3 +77,25 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " Automatically insert import paths
 let g:go_fmt_command = "goimports"
+set autowrite "No save required before building
+let g:go_list_type = "quickfix" "all error lists are of type quickfix list
+let g:go_metalinter_autosave = 1 " Run gometalinter on save
+let g:go_metalinter_deadline = "5s" " Time out gometalinter after five seconds
+" Shortcuts for :GoAlternate function
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+" :GoInfo settings
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+let g:go_auto_type_info = 1 " Show information automatically
+set updatetime=100 " Update more frequently
+" GoTest shortcut
+autocmd FileType go nmap <Leader>t <Plug>(go-test)
+" GoBuild shortcut
+autocmd FileType go nmap <Leader>b <Plug>(go-build)
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
