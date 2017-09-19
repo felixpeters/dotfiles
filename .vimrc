@@ -1,12 +1,29 @@
 set nocp
-execute pathogen#infect()
+
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'https://github.com/w0rp/ale.git'
+Plug 'https://github.com/jiangmiao/auto-pairs.git'
+Plug 'https://github.com/mattn/emmet-vim.git'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/tpope/vim-sensible.git'
+Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/altercation/vim-colors-solarized.git'
+Plug 'https://github.com/fatih/vim-go.git'
+Plug 'https://github.com/SirVer/ultisnips.git'
+Plug 'https://github.com/honza/vim-snippets.git'
+" Initialize plugin system
+call plug#end()
 
 " Syntax highlighting
 syntax enable
 filetype plugin indent on
 set autoindent
 set expandtab
-set ts=2 " set indent to 4 spaces
+set tabstop=2 " set indent to 4 spaces
+set softtabstop=2
+set shiftwidth=2
 set showmatch " show bracket matches
 set ignorecase " ignore case in search
 set hlsearch " highlight all search matches
@@ -48,7 +65,7 @@ if (exists('+colorcolumn'))
 endif
 
 " CtrlP
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/plugged/ctrlp.vim
 let g:ctrlp_map = '<c-p>' " Invoke search with ctrl-p
 let g:ctrlp_cmd = 'CtrlP' " Invoke search with :CtrlP command
 let g:ctrlp_working_path_mode = 0 " find project dir using vcs folders
@@ -80,6 +97,7 @@ let g:go_fmt_command = "goimports"
 set autowrite "No save required before building
 let g:go_list_type = "quickfix" "all error lists are of type quickfix list
 let g:go_metalinter_autosave = 1 " Run gometalinter on save
+let g:go_metalinter_autosave_enabled = [] " Turn off linter for now
 let g:go_metalinter_deadline = "5s" " Time out gometalinter after five seconds
 " Shortcuts for :GoAlternate function
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
@@ -94,6 +112,8 @@ set updatetime=100 " Update more frequently
 autocmd FileType go nmap <Leader>t <Plug>(go-test)
 " GoBuild shortcut
 autocmd FileType go nmap <Leader>b <Plug>(go-build)
+" GoCoverageToggle shortcut
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"

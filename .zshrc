@@ -96,14 +96,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-# # Clean docker containers and images easier
-# function dockercleanimages {
-# 	docker rmi -f $(docker images -q -f dangling=true)
-# }
-#
-# function dockercleancontainers {
-# 	docker rm $(docker ps -a -q)
-# }
+# Clean docker containers and images easier
+function dockercleanimages {
+	docker rmi -f $(docker images -q -f dangling=true)
+}
+
+function dockercleancontainers {
+ 	docker rm $(docker ps -a -q)
+}
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Applications/google-cloud-sdk/path.zsh.inc' ]; then source '/Applications/google-cloud-sdk/path.zsh.inc'; fi
