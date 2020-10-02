@@ -11,6 +11,8 @@ Plug 'https://github.com/tpope/vim-sensible.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/fatih/vim-go.git'
+Plug 'https://github.com/davidhalter/jedi-vim.git'
+Plug 'https://github.com/tmhedberg/SimpylFold.git'
 Plug 'rizzatti/dash.vim'
 "Plug 'https://github.com/SirVer/ultisnips.git'
 "Plug 'https://github.com/honza/vim-snippets.git'
@@ -19,6 +21,9 @@ call plug#end()
 
 " Setting for ale linter
 let g:ale_sign_column_always = 1
+
+" Enable folding
+let g:SimpylFold_docstring_preview = 1
 
 " Syntax highlighting
 syntax enable
@@ -42,7 +47,16 @@ au BufNewFile,BufRead *.py
         \ set tabstop=4 |
         \ set softtabstop=4 |
         \ set shiftwidth=4 |
+        \ set textwidth=79 |
+        \ set expandtab |
+        \ set autoindent |
         \ set fileformat=unix |
+
+" Full stack development
+au BufNewFile,BufRead *.js, *.html, *.css
+        \ set tabstop=2 |
+        \ set softtabstop=2 |
+        \ set shiftwidth=2 |
 
 " Go settings
 au BufNewFile,BufRead *.go
