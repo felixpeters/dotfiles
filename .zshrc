@@ -1,5 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/opt/tcl-tk/bin:$PATH
+export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
+export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"
+export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/felix/.oh-my-zsh
@@ -110,7 +114,6 @@ if [ -f '/Applications/google-cloud-sdk/path.zsh.inc' ]; then source '/Applicati
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Applications/google-cloud-sdk/completion.zsh.inc' ]; then source '/Applications/google-cloud-sdk/completion.zsh.inc'; fi
-# Enable autocompletion for pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi

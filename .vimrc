@@ -3,7 +3,7 @@ set nocp
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/kien/ctrlp.vim.git'
-Plug 'https://github.com/w0rp/ale.git'
+Plug 'https://github.com/dense-analysis/ale.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
 Plug 'https://github.com/mattn/emmet-vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -11,16 +11,26 @@ Plug 'https://github.com/tpope/vim-sensible.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/fatih/vim-go.git'
-Plug 'https://github.com/davidhalter/jedi-vim.git'
 Plug 'https://github.com/tmhedberg/SimpylFold.git'
 Plug 'rizzatti/dash.vim'
-"Plug 'https://github.com/SirVer/ultisnips.git'
-"Plug 'https://github.com/honza/vim-snippets.git'
 " Initialize plugin system
 call plug#end()
 
-" Setting for ale linter
+
+" Settings for ale linter
 let g:ale_sign_column_always = 1
+let g:ale_fix_on_save = 1
+let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
+let g:ale_fixers = {
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  'javascript': ['prettier'],
+\  'python': ['autopep8', 'autoimport', 'isort'],
+\  'json': ['fixjson'],
+\}
+
+" Settings for Kite
+let g:kite_supported_languages = ['python', 'javascript', 'go']
+let g:kite_tab_complete=1
 
 " Enable folding
 let g:SimpylFold_docstring_preview = 1
@@ -40,6 +50,9 @@ set incsearch " show typeahead search results
 set ruler " show row and column in footer
 "set clipboard=unnamed " use system clipboard
 set wildmenu " enable bash style tab completion
+" initialize statusline
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2  " always display the status line"
 
 " Indentation settings
 " Python settings
@@ -53,7 +66,7 @@ au BufNewFile,BufRead *.py
         \ set fileformat=unix |
 
 " Full stack development
-au BufNewFile,BufRead *.js, *.html, *.css
+au BufNewFile,BufRead *.js, *.html, *.css, *.jsx
         \ set tabstop=2 |
         \ set softtabstop=2 |
         \ set shiftwidth=2 |
@@ -98,7 +111,7 @@ nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
 set splitbelow " split below
 set splitright " split to the right
-    
+
 " Vim-go
 " Go bin path
 let g:go_bin_path="/Users/felix/code/go/bin"
@@ -132,11 +145,6 @@ autocmd FileType go nmap <Leader>t <Plug>(go-test)
 autocmd FileType go nmap <Leader>b <Plug>(go-build)
 " GoCoverageToggle shortcut
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Text search
 " The Silver Searcher
