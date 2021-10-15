@@ -29,8 +29,8 @@ let g:ale_fixers = {
 \}
 
 " Settings for Kite
-let g:kite_supported_languages = ['python', 'javascript', 'go']
-let g:kite_tab_complete=1
+"let g:kite_supported_languages = ['python', 'javascript', 'go']
+"let g:kite_tab_complete=1
 
 " Enable folding
 let g:SimpylFold_docstring_preview = 1
@@ -51,7 +51,7 @@ set ruler " show row and column in footer
 "set clipboard=unnamed " use system clipboard
 set wildmenu " enable bash style tab completion
 " initialize statusline
-set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+"set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2  " always display the status line"
 
 " Indentation settings
@@ -66,7 +66,7 @@ au BufNewFile,BufRead *.py
         \ set fileformat=unix |
 
 " Full stack development
-au BufNewFile,BufRead *.js, *.html, *.css, *.jsx
+au BufNewFile,BufRead *.js, *.html, *.css
         \ set tabstop=2 |
         \ set softtabstop=2 |
         \ set shiftwidth=2 |
